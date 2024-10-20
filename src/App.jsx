@@ -7,9 +7,6 @@ import Hangman from './components/hangman/Hangman';
 import TicTacToe from './components/tic-tac-toe/TicTacToe';
 import MemoryCuple from './components/memory-cuples/MemoryCuple';
 import RockPaperScissor from './components/rock-paper-scissor/RockPaperScissor';
-import HomePage from './components/HomePage'; // Importa el nuevo componente de la página principal
-import SimpleMode from './components/SimpleMode'; // Importa el componente para el modo simple
-import AdvancedMode from './components/AdvancedMode'; // Importa el componente para el modo avanzado
 
 import Button from './components/button/Button'; // Importa el nuevo componente
 import { useState } from 'react';
@@ -59,9 +56,7 @@ function App() {
                 </div>
               )
             } />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/simple-mode" element={<SimpleMode />} />
-            <Route path="/advanced-mode" element={<AdvancedMode />} />
+           
           </Routes>
         </div>
 
