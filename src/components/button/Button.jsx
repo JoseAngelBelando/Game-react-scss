@@ -1,8 +1,14 @@
-import { StyledButton } from './button.styles';
+// src/components/button/Button.jsx
 
-const Button = ({ color, children }) => {
-	console.log(color);
-	return <StyledButton color={color}>{children}</StyledButton>;
+
+import { ButtonStyled } from './button.styles'; // Importa los estilos
+
+const Button = ({ onClick, children }) => {
+  return (
+    <ButtonStyled onClick={onClick}>
+      {children}
+    </ButtonStyled>
+  );
 };
 
 export default Button;

@@ -1,23 +1,20 @@
+// src/components/button/button.styles.js
+
 import styled from 'styled-components';
 
-const getBoxShadow = ({ x, y, blur, color }) => `${x} ${y} ${blur} ${color}`;
+export const ButtonStyled = styled.button`
+	margin: 10px 0;
+	padding: 10px;
+	width: 20rem;
+	border: 1px solid white;
+	background-color: white;
+	color: black;
+	border-radius: 15px;
+	transition: 0.3s ease;
+	cursor: pointer;
 
-const StyledButton = styled.button`
-	background-color: ${({ color }) => color};
-	color: white;
-	border: none;
-	padding: 0.5rem;
-	box-shadow: ${props => getBoxShadow(props.getBoxShadow)};
-
-	@media screen and (width>768px) {
-		display: block;
-	}
-
-	@media (hover: hover) {
-		&:hover {
-			scale: 0.8;
-		}
+	&:hover {
+		background-color: #ffeb3b;
+		transition: 0.3s ease;
 	}
 `;
-
-export { StyledButton };

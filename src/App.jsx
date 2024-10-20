@@ -1,85 +1,84 @@
-import './scss/styles.scss'
-import './scss/styles.scss';
+// src/App.jsx
 
-function App ()  {
+import './scss/index.scss';
+import './scss/drawins.scss';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Importa Routes y Route
+import Hangman from './components/hangman/Hangman';
+import TicTacToe from './components/tic-tac-toe/TicTacToe';
+import MemoryCuple from './components/memory-cuples/MemoryCuple';
+import RockPaperScissor from './components/rock-paper-scissor/RockPaperScissor';
+import HomePage from './components/HomePage'; // Importa el nuevo componente de la página principal
+import SimpleMode from './components/SimpleMode'; // Importa el componente para el modo simple
+import AdvancedMode from './components/AdvancedMode'; // Importa el componente para el modo avanzado
+
+import Button from './components/button/Button'; // Importa el nuevo componente
+import { useState } from 'react';
+
+function App() {
+  const [activeGame, setActiveGame] = useState(null);
+
+  const renderGame = () => {
+    switch (activeGame) {
+      case 'hangman':
+        return <Hangman setActiveGame={setActiveGame} />;
+      case 'tic-tac-toe':
+        return <TicTacToe setActiveGame={setActiveGame} />;
+      case 'memory-cuples':
+        return <MemoryCuple setActiveGame={setActiveGame} />;
+      case 'rock-paper-scissor':
+        return <RockPaperScissor setActiveGame={setActiveGame} />;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div>
-      <header className="header">
-        <div className="container">
-          <h1 className="title">
-            Jose <span className="game">Game</span>
-          </h1>
+    <Router>
+      <div>
+        <header className="header">
+          <div className="container">
+            <h1 className="title">
+              Jose <span className="game">Game</span>
+            </h1>
+          </div>
+        </header>
+
+        <div className="content">
+          <Routes>
+            {/* Rutas para las diferentes páginas */}
+            <Route path="/" element={
+              activeGame ? (
+                <div>{renderGame()}</div>
+              ) : (
+                <div className="game-links">
+                  <Button onClick={() => setActiveGame('hangman')}>Hangman</Button>
+                  <Button onClick={() => setActiveGame('tic-tac-toe')}>Tic-Tac-Toe</Button>
+                  <Button onClick={() => setActiveGame('memory-cuples')}>Memory Cuples</Button>
+                  <Button onClick={() => setActiveGame('rock-paper-scissor')}>Rock Paper Scissor</Button>
+                  <Button onClick={() => setActiveGame('bingo')}>Bingo</Button>
+                </div>
+              )
+            } />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/simple-mode" element={<SimpleMode />} />
+            <Route path="/advanced-mode" element={<AdvancedMode />} />
+          </Routes>
         </div>
-      </header>
 
-      <div className="content">
-        <div className="game-links">
-          <a target="_blank" rel="noopener noreferrer" href="/hangman.html">
-            Hangman
-          </a>
-          <a target="_blank" rel="noopener noreferrer" href="/tic-tac-toe.html">
-            Tic-Tac-Toe
-          </a>
-          <a target="_blank" rel="noopener noreferrer" href="/memory-cuples.html">
-            Memori Cuples
-          </a>
-          <a target="_blank" rel="noopener noreferrer" href="/rock-paper-scissor.html">
-            Rock Paper Scissor
-          </a>
-          <a target="_blank" rel="noopener noreferrer" href="/bingo.html">
-            Bingo
-          </a>
-
-          {/* Frog */}
-          <div className="frog">
-            <div className="pupil left"></div>
-            <div className="pupil right"></div>
-            <div className="mouth"></div>
-            <div className="nouse left"></div>
-            <div className="nouse right"></div>
-          </div>
-
-          {/* Hangman */}
-          <div className="hangman">
-            <div className="h-post"></div>
-            <div className="h-beam"></div>
-            <div className="h-rope"></div>
-            <div className="h-head"></div>
-            <div className="h-body"></div>
-            <div className="h-left-arm"></div>
-            <div className="h-right-arm"></div>
-            <div className="h-left-leg"></div>
-            <div className="h-right-leg"></div>
-          </div>
-
-          {/* Tic Tac Toe */}
-          <div className="drawin_board">
-            <div className="drawin-cell" data-index="0">X</div>
-            <div className="drawin-cell" data-index="1">O</div>
-            <div className="drawin-cell" data-index="2">X</div>
-            <div className="drawin-cell" data-index="3"></div>
-            <div className="drawin-cell" data-index="4">X</div>
-            <div className="drawin-cell" data-index="5"></div>
-            <div className="drawin-cell" data-index="6">O</div>
-            <div className="drawin-cell" data-index="7"></div>
-            <div className="drawin-cell" data-index="8">O</div>
-          </div>
-        </div>
+        <footer className="footer">
+          <p className="made">
+            Made with * by{' '}
+            <a className="name" href="https://github.com/JoseAngelBelando" target="_blank" rel="noopener noreferrer">
+              José Angel
+            </a>{' '}
+            -{' '}
+            <a className="repository" href="https://github.com/JoseAngelBelando/games" target="_blank" rel="noopener noreferrer">
+              Repository
+            </a>
+          </p>
+        </footer>
       </div>
-
-      <footer className="footer">
-        <p className="made">
-          Made with * by{' '}
-          <a className="name" href="https://github.com/JoseAngelBelando" target="_blank" rel="noopener noreferrer">
-            José Angel
-          </a>{' '}
-          -{' '}
-          <a className="repository" href="https://github.com/JoseAngelBelando/games" target="_blank" rel="noopener noreferrer">
-            Repository
-          </a>
-        </p>
-      </footer>
-    </div>
+    </Router>
   );
 }
 
