@@ -1,118 +1,133 @@
-// // src/components/rockPaperScissors.styles.js
-// import styled from 'styled-components';
+// src/components/rock-paper-scissor/RockPaperScissor.styled.js
 
-// export const RpsContainer = styled.div`
-// 	max-width: 800px;
-// 	height: 100vh;
-// 	margin: 0 auto;
-// 	padding: 3rem 0;
-// 	color: #fff;
-// 	background-image: radial-gradient(circle at center, #1f3756, #141539);
-// 	font-family: 'Barlow Semi Condensed', sans-serif;
-// 	text-align: center;
-// `;
+import styled from 'styled-components';
 
-// export const GameItems = styled.div`
-// 	position: relative;
-// 	width: 340px;
-// 	height: 540px;
-// 	margin: 0 auto;
-// 	background-repeat: no-repeat;
-// 	background-position: center;
-// 	background-image: url(../assets/images/bg-triangle.svg);
-// `;
+export const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: #fff;
+	background: radial-gradient(circle at center, #1f3756, #141539);
+	height: 100vh;
+	padding: 2rem;
+`;
 
-// export const GameItem = styled.div`
-// 	position: absolute;
-// 	display: flex;
-// 	align-items: center;
-// 	justify-content: center;
-// 	width: 115px;
-// 	height: 115px;
-// 	border-radius: 50%;
-// 	border: 15px solid transparent;
-// 	box-shadow: 0 5px rgba(0, 0, 150, 0.1);
-// 	background-color: #fff;
-// 	transition: transform 0.2s;
-// 	cursor: pointer;
+export const Header = styled.header`
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 700px;
+	border: 2px solid hsl(217, 16%, 45%);
+	padding: 1.6rem;
+	border-radius: 1rem;
+	margin-bottom: 2rem;
+`;
 
-// 	&:hover {
-// 		transform: scale(0.9);
-// 	}
+export const ScoreBoard = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #fff;
+	color: hsl(229, 64%, 46%);
+	border-radius: 1rem;
+	padding: 0.5rem;
+	width: 100px;
+`;
 
-// 	&.game-item--rock {
-// 		top: 350px;
-// 		left: 225px;
-// 		border-color: #db2e4d;
-// 	}
+export const ScoreTitle = styled.span`
+	font-size: 1.25rem;
+`;
 
-// 	&.game-item--paper {
-// 		top: 175px;
-// 		left: 250px;
-// 		border-color: #5671f5;
-// 	}
+export const ScorePoints = styled.span`
+	font-size: 2.5rem;
+	font-weight: 700;
+`;
 
-// 	&.game-item--scissors {
-// 		top: 100px;
-// 		right: 0;
-// 		border-color: #eb9f0e;
-// 	}
+export const Logo = styled.div`
+	text-align: center;
+	font-size: 1.25rem;
 
-// 	&.game-item--lizard {
-// 		top: 350px;
-// 		left: 25px;
-// 		border-color: #834ee3;
-// 	}
+	@media (min-width: 480px) {
+		font-size: 3rem;
+	}
 
-// 	&.game-item--spock {
-// 		top: 175px;
-// 		left: -30px;
-// 		border-color: #2d8dab;
-// 	}
-// `;
+	span {
+		display: block;
+	}
+`;
 
-// export const GameResults = styled.div`
-// 	display: flex;
-// 	justify-content: space-around;
-// 	padding: 2rem 0;
+export const Main = styled.main`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+`;
 
-// 	h2 {
-// 		margin: 0.5rem 0;
-// 	}
-// `;
+export const GameItems = styled.div`
+	display: flex;
+	gap: 1rem;
+`;
 
-// export const Score = styled.div`
-// 	display: flex;
-// 	justify-content: space-between;
-// 	padding: 0 5rem;
-// `;
+export const GameItem = styled.div`
+	background: #fff;
+	border: 15px solid #5671f5;
+	border-radius: 50%;
+	box-shadow: 0 5px #2a45c2;
+	cursor: pointer;
+	width: 115px;
+	height: 115px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-// export const Modal = styled.div`
-// 	position: fixed;
-// 	top: 0;
-// 	left: 0;
-// 	width: 100%;
-// 	height: 100vh;
-// 	display: flex;
-// 	align-items: center;
-// 	justify-content: center;
-// 	background-color: rgba(0, 0, 0, 0.9);
-// `;
+	&:hover {
+		transform: scale(0.9);
+	}
 
-// export const ButtonRules = styled.button`
-// 	position: absolute;
-// 	right: 3rem;
-// 	bottom: 3rem;
-// 	background: none;
-// 	padding: 1rem 2rem;
-// 	border: none;
-// 	border: 1px solid white;
-// 	border-radius: 0.5rem;
-// 	color: white;
-// 	cursor: pointer;
-// 	transition: background 0.3s;
+	img {
+		width: 50px;
+	}
+`;
 
-// 	&:hover {
-// 		background: rgba(255, 255, 255, 0.1);
-// 	}
-// `;
+export const GameResults = styled.div`
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+	max-width: 700px;
+	text-align: center;
+`;
+
+export const GameItemResult = styled.div`
+	background: #fff;
+	border-radius: 50%;
+	border: 15px solid #db2e4d;
+	width: 115px;
+	height: 115px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	img {
+		width: 50px;
+	}
+`;
+
+export const PlayAgainButton = styled.button`
+	background: none;
+	color: white;
+	border: 1px solid white;
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	margin-top: 1rem;
+`;
+
+export const RulesButton = styled.button`
+	background: none;
+	color: white;
+	border: 1px solid white;
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	margin-top: 2rem;
+`;

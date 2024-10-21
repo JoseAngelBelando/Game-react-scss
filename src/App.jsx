@@ -2,14 +2,16 @@
 
 import './scss/index.scss';
 import './scss/drawins.scss';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Importa Routes y Route
+import { BrowserRouter as Router } from 'react-router-dom';
 import Hangman from './components/hangman/Hangman';
 import TicTacToe from './components/tic-tac-toe/TicTacToe';
 import MemoryCuple from './components/memory-cuples/MemoryCuple';
 import RockPaperScissor from './components/rock-paper-scissor/RockPaperScissor';
-
-import Button from './components/button/Button'; // Importa el nuevo componente
+import Button from './components/button/Button';
+ // Importa el componente Frog
 import { useState } from 'react';
+import Frog from './components/frog/Frog.jsx';
+
 
 function App() {
   const [activeGame, setActiveGame] = useState(null);
@@ -41,23 +43,19 @@ function App() {
         </header>
 
         <div className="content">
-          <Routes>
-            {/* Rutas para las diferentes páginas */}
-            <Route path="/" element={
-              activeGame ? (
-                <div>{renderGame()}</div>
-              ) : (
-                <div className="game-links">
-                  <Button onClick={() => setActiveGame('hangman')}>Hangman</Button>
-                  <Button onClick={() => setActiveGame('tic-tac-toe')}>Tic-Tac-Toe</Button>
-                  <Button onClick={() => setActiveGame('memory-cuples')}>Memory Cuples</Button>
-                  <Button onClick={() => setActiveGame('rock-paper-scissor')}>Rock Paper Scissor</Button>
-                  <Button onClick={() => setActiveGame('bingo')}>Bingo</Button>
-                </div>
-              )
-            } />
-           
-          </Routes>
+          {activeGame ? (
+            renderGame()
+          ) : (
+            <div className="game-links">
+              <Button onClick={() => setActiveGame('hangman')}>Hangman</Button>
+              <Button onClick={() => setActiveGame('tic-tac-toe')}>Tic-Tac-Toe</Button>
+              <Button onClick={() => setActiveGame('memory-cuples')}>Memory Cuples</Button>
+              <Button onClick={() => setActiveGame('rock-paper-scissor')}>Rock Paper Scissor</Button>
+              <Button onClick={() => setActiveGame('bingo')}>Bingo</Button>
+            </div>
+          )}
+          {/* Agregando el componente Frog aquí */}
+          <Frog />
         </div>
 
         <footer className="footer">

@@ -1,73 +1,221 @@
-// src/components/rock-paper-scissor/RockPaperScissor.jsx
 import { useState } from 'react';
-import './rock-paper-scissor.scss'; // Importa los estilos SCSS
+import styled from 'styled-components';
+import rockImage from '../../../public/assets/images/icon-rock.svg';
+import paperImage from '../../../public/assets/images/icon-paper.svg';
+import scissorsImage from '../../../public/assets/images/icon-scissors.svg';
+import triangleImage from '../../../public/assets/images/bg-triangle.svg';
+
+const images = {
+  Rock: rockImage,
+  Paper: paperImage,
+  Scissors: scissorsImage,
+  Triangle: triangleImage,
+};
+
+// Estilos de componentes
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  background: black;  // Cambia el fondo a negro
+  padding: 2rem;
+`;
+
+const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 500px;
+  border: 2px solid hsl(217, 16%, 45%);
+  padding: 1.6rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+`;
+
+const ScoreBoard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  color: hsl(229, 64%, 46%);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  width: 100px;
+`;
+
+const ScoreTitle = styled.span`
+  font-size: 1.25rem;
+`;
+
+const ScorePoints = styled.span`
+  font-size: 2.5rem;
+  font-weight: 700;
+`;
+
+const Main = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const GameItems = styled.div`
+  position: relative;
+  width: 360px;
+  height: 520px;
+  margin: 0 auto;
+  background-image: url(${triangleImage});
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+const GameItem = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(0.9);
+  }
+
+  img {
+    width: 50px;
+  }
+`;
+
+const GameResults = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5rem;
+`;
+
+const GameItemResult = styled.div`
+  background: #fff;
+  border-radius: 50%;
+  border: 15px solid #db2e4d;
+  width: 115px;
+  height: 115px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 50px;
+  }
+`;
+
+const PlayAgainButton = styled.button`
+  background: none;
+  color: white;
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+`;
+
+const BackToMenuButton = styled.button`
+  background: none;
+  color: white;
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+`;
 
 const RockPaperScissor = ({ setActiveGame }) => {
-  const [score, setScore] = useState({ player: 0, computer: 0 });
-  const [showModal, setShowModal] = useState(false);
+  const [userChoice, setUserChoice] = useState(null);
+  const [computerChoice, setComputerChoice] = useState(null);
   const [result, setResult] = useState('');
+  const [score, setScore] = useState({ user: 0, computer: 0 });
 
-  const gameRules = {
-    rock: { defeats: ['scissors', 'lizard'] },
-    paper: { defeats: ['rock', 'spock'] },
-    scissors: { defeats: ['paper', 'lizard'] },
-    lizard: { defeats: ['spock', 'paper'] },
-    spock: { defeats: ['scissors', 'rock'] },
-  };
+  const choices = ['Rock', 'Paper', 'Scissors'];
 
-  const playGame = (playerChoice) => {
-    const choices = Object.keys(gameRules);
-    const computerChoice = choices[Math.floor(Math.random() * choices.length)];
-    
-    if (playerChoice === computerChoice) {
-      setResult('Empate');
-    } else if (gameRules[playerChoice].defeats.includes(computerChoice)) {
-      setResult('Ganaste!');
-      setScore((prevScore) => ({ ...prevScore, player: prevScore.player + 1 }));
+  const playGame = (choice) => {
+    const randomChoice = choices[Math.floor(Math.random() * choices.length)];
+    setUserChoice(choice);
+    setComputerChoice(randomChoice);
+
+    if (choice === randomChoice) {
+      setResult('Draw');
+    } else if (
+      (choice === 'Rock' && randomChoice === 'Scissors') ||
+      (choice === 'Scissors' && randomChoice === 'Paper') ||
+      (choice === 'Paper' && randomChoice === 'Rock')
+    ) {
+      setResult('You Win!');
+      setScore((prevScore) => ({ ...prevScore, user: prevScore.user + 1 }));
     } else {
-      setResult('Perdiste!');
+      setResult('You Lose!');
       setScore((prevScore) => ({ ...prevScore, computer: prevScore.computer + 1 }));
     }
+  };
 
-    setShowModal(true);
+  const playAgain = () => {
+    setUserChoice(null);
+    setComputerChoice(null);
+    setResult('');
   };
 
   return (
-    <div className="rps-body">
-      <header className="rps-header">
-        <div className="logo">Rock Paper Scissors</div>
-        <div className="score">
-          <div className="score__title">Score</div>
-          <div className="score__points">{score.player} : {score.computer}</div>
+    <Container>
+      <Header>
+        <ScoreBoard>
+          <ScoreTitle>YOU</ScoreTitle>
+          <ScorePoints>{score.user}</ScorePoints>
+        </ScoreBoard>
+        <div className="logo">
+          <span className="block">ROCK</span>
+          <span className="block">PAPER</span>
+          <span className="block">SCISSORS</span>
         </div>
-      </header>
-      <div className="home-container">
-        <div className="game-modes">
-          {Object.keys(gameRules).map((choice) => (
-            <div 
-              key={choice}
-              className={`game-modes__item game-item game-item--${choice}`} 
+        <ScoreBoard>
+          <ScoreTitle>PC</ScoreTitle>
+          <ScorePoints>{score.computer}</ScorePoints>
+        </ScoreBoard>
+      </Header>
+      <Main>
+        <GameItems>
+          {choices.map((choice, index) => (
+            <GameItem
+              key={index}
+              style={{
+                top: choice === 'Rock' ? '285px' : choice === 'Paper' ? '100px' : '100px',
+                left: choice === 'Rock' ? '120px' : choice === 'Paper' ? '0' : 'auto',
+                right: choice === 'Scissors' ? '0' : 'auto',
+              }}
               onClick={() => playGame(choice)}
             >
-              {choice.charAt(0).toUpperCase() + choice.slice(1)}
-            </div>
+              <img src={images[choice]} alt={choice} />
+            </GameItem>
           ))}
-        </div>
-      </div>
-
-      {showModal && (
-        <div className={`modal ${showModal ? 'modal--show' : ''}`}>
-          <div className="modal-content">
-            <h2>{result}</h2>
-            <button onClick={() => setShowModal(false)}>Cerrar</button>
-          </div>
-        </div>
-      )}
-
-      <button className="button-rules" onClick={() => setActiveGame(null)}>
-        Volver
-      </button>
-    </div>
+        </GameItems>
+        {userChoice && computerChoice && (
+          <GameResults>
+            <h2>Your Picked</h2>
+            <GameItemResult>
+              <img src={images[userChoice]} alt={userChoice} />
+            </GameItemResult>
+            <h2 id="game-result">{result}</h2>
+            <GameItemResult>
+              <img src={images[computerChoice]} alt={computerChoice} />
+            </GameItemResult>
+            <h2>PC Picked</h2>
+          </GameResults>
+        )}
+        <PlayAgainButton onClick={playAgain}>Play Again</PlayAgainButton>
+        <BackToMenuButton onClick={() => setActiveGame(null)}>Back to Menu</BackToMenuButton>
+      </Main>
+    </Container>
   );
 };
 
