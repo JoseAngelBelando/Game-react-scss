@@ -1,6 +1,3 @@
-// src/components/button/Button.jsx
-
-
 import { ButtonStyled } from './button.styles'; // Importa los estilos
 
 const Button = ({ onClick, children }) => {

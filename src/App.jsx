@@ -1,5 +1,3 @@
-// src/App.jsx
-
 import './scss/index.scss';
 import { BrowserRouter as Router } from 'react-router-dom';
 import TicTacToe from './components/tic-tac-toe/TicTacToe';

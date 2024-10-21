@@ -1,5 +1,3 @@
-// src/components/rock-paper-scissor/RockPaperScissor.styled.js
-
 import styled from 'styled-components';
 
 export const Container = styled.div`

@@ -1,5 +1,3 @@
-// src/components/memory-cuples/memoryCuple.styles.js
-
 import styled from 'styled-components';
 
 // Contenedor principal del juego

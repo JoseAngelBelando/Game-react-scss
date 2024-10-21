@@ -1,5 +1,3 @@
-// src/components/tic-tac-toe/ticTacToe.styles.js
-
 import styled from 'styled-components';
 
 // Contenedor principal del juego

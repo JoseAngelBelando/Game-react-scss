@@ -1,5 +1,3 @@
-// src/components/tic-tac-toe/TicTacToe.jsx
-
 import { useState, useEffect } from 'react';
 import { TicTacToeContainer, Board, Row, Square, Button } from './ticTacToe.styles';
 

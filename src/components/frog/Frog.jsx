@@ -1,5 +1,3 @@
-// src/components/frog/Frog.jsx
-
 import {
     FrogContainer,
     Eye,
@@ -23,4 +21,3 @@ import {
   };
   
   export default Frog;
-  

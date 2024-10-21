@@ -1,5 +1,3 @@
-// src/components/Hangman/Hangman.styles.js
-
 import styled from 'styled-components';
 
 export const HangmanContainer = styled.div`

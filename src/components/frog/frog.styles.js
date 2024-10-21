@@ -1,5 +1,3 @@
-// src/components/frog/frog.styles.js
-
 import styled from 'styled-components';
 
 export const FrogContainer = styled.div`

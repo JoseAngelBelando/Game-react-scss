@@ -1,5 +1,3 @@
-// src/components/Hangman/Hangman.jsx
-
 import  { useState, useEffect } from 'react';
 import {
   HangmanContainer,
