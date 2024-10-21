@@ -1,7 +1,6 @@
 // src/App.jsx
 
 import './scss/index.scss';
-import './scss/drawins.scss';
 import { BrowserRouter as Router } from 'react-router-dom';
 import TicTacToe from './components/tic-tac-toe/TicTacToe';
 import MemoryCuple from './components/memory-cuples/MemoryCuple';
@@ -9,6 +8,7 @@ import RockPaperScissor from './components/rock-paper-scissor/RockPaperScissor';
 import Frog from './components/frog/Frog';
 import Button from './components/button/Button';
 import { useState } from 'react';
+import Hangman from './components/hangman/Hangman'; // Asegúrate de importar correctamente Hangman
 
 function App() {
     const [activeGame, setActiveGame] = useState(null);
@@ -24,8 +24,7 @@ function App() {
             case 'hangman':
                 return (
                     <>
-                        {/* Cargar el componente Hangman solo cuando el juego está activo */}
-                        
+                        <Hangman /> {/* Aquí es donde se renderiza el componente Hangman */}
                         <Button onClick={() => setActiveGame(null)}>Volver a la Página Principal</Button> {/* Botón para volver */}
                     </>
                 );
@@ -50,7 +49,6 @@ function App() {
                         renderGame()
                     ) : (
                         <>
-                            {/* Mostrar enlaces de juegos en la página principal */}
                             <div className="game-links">
                                 <Button onClick={() => setActiveGame('hangman')}>Hangman</Button>
                                 <Button onClick={() => setActiveGame('tic-tac-toe')}>Tic-Tac-Toe</Button>
