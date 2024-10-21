@@ -8,7 +8,6 @@ export const Container = styled.div`
 	align-items: center;
 	color: #fff;
 	background: radial-gradient(circle at center, #1f3756, #141539);
-	height: 100vh;
 	padding: 2rem;
 `;
 

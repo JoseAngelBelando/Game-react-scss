@@ -1,109 +1,77 @@
-// src/components/hangman/Hangman.styles.js
+// src/components/frog/frog.styles.js
 
 import styled from 'styled-components';
 
-export const HangmanContainer = styled.div`
-	position: absolute;
-	left: 10%;
-	top: 50%;
+export const FrogContainer = styled.div`
+	position: relative;
+	top: 6rem;
 	width: 200px;
-	height: 300px;
+	height: 200px;
+	background: radial-gradient(circle, #4caf50 60%, #388e3c 100%);
+	border-radius: 50%;
+	box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.7);
+	margin: auto;
+`;
 
-	.h-post {
-		position: absolute;
-		width: 16px;
-		height: 290px;
-		background-color: white;
-		left: 50px;
-		bottom: 0;
+export const Eye = styled.div`
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	background: radial-gradient(circle, #fff 60%, #ccc 100%);
+	border-radius: 50%;
+	top: 20px;
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+
+	&.left {
+		left: 15px;
 	}
 
-	.h-post::after {
-		content: '';
-		position: absolute;
-		width: 290px;
-		height: 10px;
-		background-color: white;
-		bottom: 0;
-		right: -150px;
+	&.right {
+		right: 15px;
+	}
+`;
+
+export const Pupil = styled.div`
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	background: black;
+	border-radius: 50%;
+	top: 20px;
+
+	&.left {
+		left: 35px;
 	}
 
-	.h-beam {
-		position: absolute;
-		width: 100px;
-		height: 10px;
-		background-color: white;
-		top: 0;
-		left: 50px;
+	&.right {
+		right: 35px;
+	}
+`;
+
+export const Mouth = styled.div`
+	position: absolute;
+	width: 140px;
+	height: 80px;
+	background: radial-gradient(circle, #e57373 60%, #d32f2f 90%);
+	border-radius: 0 0 70px 70px;
+	top: 110px;
+	left: 30px;
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+`;
+
+export const Nouse = styled.div`
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	background: #000;
+	border-radius: 50%;
+	top: 80px;
+
+	&.left {
+		left: 70px;
 	}
 
-	.h-rope {
-		position: absolute;
-		width: 5px;
-		height: 50px;
-		background-color: white;
-		left: 140px;
-		top: 10px;
-	}
-
-	.h-head {
-		position: absolute;
-		width: 40px;
-		height: 40px;
-		border-radius: 50%;
-		background-color: white;
-		left: 120px;
-		top: 60px;
-	}
-
-	.h-body {
-		position: absolute;
-		width: 10px;
-		height: 80px;
-		background-color: white;
-		left: 135px;
-		top: 100px;
-	}
-
-	.h-left-arm {
-		position: absolute;
-		width: 60px;
-		height: 10px;
-		background-color: white;
-		top: 120px;
-		left: 75px;
-		transform: rotate(-45deg);
-		transform-origin: left bottom;
-	}
-
-	.h-right-arm {
-		position: absolute;
-		width: 60px;
-		height: 10px;
-		background-color: white;
-		top: 120px;
-		left: 145px;
-		transform: rotate(45deg);
-		transform-origin: right bottom;
-	}
-
-	.h-left-leg {
-		position: absolute;
-		width: 10px;
-		height: 60px;
-		background-color: white;
-		left: 135px;
-		top: 180px;
-		transform: rotate(-30deg);
-	}
-
-	.h-right-leg {
-		position: absolute;
-		width: 10px;
-		height: 60px;
-		background-color: white;
-		left: 135px;
-		top: 180px;
-		transform: rotate(20deg);
+	&.right {
+		right: 70px;
 	}
 `;
