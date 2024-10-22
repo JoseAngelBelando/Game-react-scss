@@ -61,11 +61,15 @@ export const BackToMenuButton = styled.button`
 	padding: 10px 20px;
 	font-size: 16px;
 	cursor: pointer;
-	background-color: #f44336;
 	color: white;
 	border: none;
 	border-radius: 5px;
 	margin-top: 10px;
+	background-color: black;
+
+	&:hover {
+		background-color: red;
+	}
 `;
 
 // Contenedor para el mensaje

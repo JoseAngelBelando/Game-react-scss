@@ -73,7 +73,7 @@ function App() {
               José Angel
             </a>{' '}
             -{' '}
-            <a className="repository" href="https://github.com/JoseAngelBelando/games" target="_blank" rel="noopener noreferrer">
+            <a className="repository" href="https://github.com/JoseAngelBelando/Game-react-scss" target="_blank" rel="noopener noreferrer">
               Repository
             </a>
           </p>
