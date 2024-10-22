@@ -6,11 +6,12 @@ import {
     Mole,
     Score,
     StartButton,
+    BackToMenuButton, // Importa el nuevo botón estilizado
     MessageContainer,
     Message
 } from './whackAMole.styles'; // Importar los componentes estilizados
 
-const WhackAMole = () => {
+const WhackAMole = ({ onBackToMenu }) => {
     const [score, setScore] = useState(0);
     const [isActive, setIsActive] = useState(false);
     const [molePosition, setMolePosition] = useState({ left: 0, top: 0 });
@@ -88,11 +89,12 @@ const WhackAMole = () => {
             </GameContainer>
             <Score>Puntuación: {score}</Score>
             <StartButton onClick={startGame}>Iniciar Juego</StartButton>
+            <BackToMenuButton onClick={onBackToMenu}>Volver al Menú</BackToMenuButton> {/* Botón de regreso al menú */}
             <MessageContainer>
                 <Message>{message}</Message>
             </MessageContainer>
         </Body>
     );
-}
+};
 
 export default WhackAMole;
