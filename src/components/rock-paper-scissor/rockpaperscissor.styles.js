@@ -91,6 +91,7 @@ export const GameResults = styled.div`
 	justify-content: space-around;
 	width: 100%;
 	max-width: 700px;
+	margin-top: 50px;
 	text-align: center;
 `;
 
@@ -119,12 +120,12 @@ export const PlayAgainButton = styled.button`
 	margin-top: 1rem;
 `;
 
-export const RulesButton = styled.button`
+export const BackToMenuButton = styled.button`
 	background: none;
 	color: white;
 	border: 1px solid white;
 	border-radius: 0.5rem;
 	padding: 0.5rem 1rem;
 	cursor: pointer;
-	margin-top: 2rem;
+	margin-top: 1rem;
 `;
