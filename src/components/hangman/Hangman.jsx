@@ -1,17 +1,18 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   HangmanContainer,
   Title,
   WordDisplay,
   Input,
   Button,
-  Message
+  Message,
+  BackToMenuButton
 } from './hangman.styles';
 
-const words = ['javascript', 'programacion', 'html', 'css', 'computadora'];
+const words = ['javascript', 'programacion', 'html', 'react', 'computadora'];
 const selectedWord = words[Math.floor(Math.random() * words.length)];
 
-const Hangman = () => {
+const Hangman = ({ setActiveGame }) => {
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [attempts, setAttempts] = useState(6);
   const [message, setMessage] = useState('');
@@ -56,6 +57,11 @@ const Hangman = () => {
     }
   }, [attempts]);
 
+  // Función para volver al menú principal
+  const onBackToMenu = () => {
+    setActiveGame(null);
+  };
+
   return (
     <HangmanContainer>
       <Title>Juego del Ahorcado</Title>
@@ -68,6 +74,7 @@ const Hangman = () => {
       />
       <Button onClick={guessLetter}>Adivinar</Button>
       <Message>{message}</Message>
+      <BackToMenuButton onClick={onBackToMenu}>Volver al Menú</BackToMenuButton>
     </HangmanContainer>
   );
 };

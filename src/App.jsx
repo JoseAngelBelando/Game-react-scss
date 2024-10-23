@@ -9,9 +9,9 @@ import DrawinHangman from './components/drawin-hangman/DrawinHangman';
 import Button from './components/button/Button';
 import { useState } from 'react';
 import Hangman from './components/hangman/Hangman';
-import WhackAMole from './components/whack-a-mole/WhackAMole'; // Asegúrate de importar el juego
+import WhackAMole from './components/whack-a-mole/WhackAMole';
 
-function App() {
+const App = () => {
   const [activeGame, setActiveGame] = useState(null);
 
   const renderGame = () => {
@@ -25,14 +25,14 @@ function App() {
       case 'hangman':
         return (
           <>
-            <Hangman /> {/* Lógica del juego del Hangman */}
-            <Button onClick={() => setActiveGame(null)}>Volver a la Página Principal</Button> {/* Botón para volver a la página principal */}
+            <Hangman setActiveGame={setActiveGame} /> 
+            
           </>
         );
       case 'whack-a-mole':
-        return <WhackAMole onBackToMenu={() => setActiveGame(null)} />; // Pasa la función para volver al menú
+        return <WhackAMole onBackToMenu={() => setActiveGame(null)} />;
       default:
-        return null; // No renderiza nada si no hay juego activo
+        return null;
     }
   };
 
@@ -59,21 +59,23 @@ function App() {
                 <Button onClick={() => setActiveGame('rock-paper-scissor')}>Rock Paper Scissor</Button>
                 <Button onClick={() => setActiveGame('whack-a-mole')}>Whack a Mole</Button>
               </div>
-              <DrawinTicTacToe />
+              <div className='drawin-tic-tac-toe'>
+              <DrawinTicTacToe /> </div>
               <Frog />
-              <DrawinHangman />
+              <div className='drawin-hangman'>
+              <DrawinHangman /></div>
             </>
           )}
         </div>
 
         <footer className="footer">
           <p className="made">
-            Made with * by{' '}
-            <a className="name" href="https://github.com/JoseAngelBelando" target="_blank" rel="noopener noreferrer">
+            Made * by{' '}
+            <a className="name" href="https://github.com/JoseAngelBelando" target="_blank" rel="github">
               José Angel
             </a>{' '}
             -{' '}
-            <a className="repository" href="https://github.com/JoseAngelBelando/Game-react-scss" target="_blank" rel="noopener noreferrer">
+            <a className="repository" href="https://github.com/JoseAngelBelando/Game-react-scss" target="_blank" rel="github">
               Repository
             </a>
           </p>

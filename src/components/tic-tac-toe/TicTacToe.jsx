@@ -62,15 +62,18 @@ const TicTacToe = ({ setActiveGame }) => {
           {renderSquare(8)}
         </Row>
       </Board>
+      
       <Button onClick={() => {
         setBoard(Array(9).fill(null));
         setIsXNext(true);
       }}>
         Restart
+        
       </Button>
       <Button onClick={() => setActiveGame(null)}>
         Back to Menu
       </Button>
+      
     </TicTacToeContainer>
   );
 };

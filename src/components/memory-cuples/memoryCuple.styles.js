@@ -77,9 +77,9 @@ export const RestartButton = styled.button`
 // Estilo del botón de volver
 export const BackButton = styled(RestartButton)`
 	background-color: black;
-	margin-left: 1.5rem; /* Color diferente para el botón de volver */
+	margin-left: 1.5rem;
 
 	&:hover {
-		background-color: red; /* Color diferente al pasar el mouse */
+		background-color: red;
 	}
 `;

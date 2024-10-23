@@ -64,6 +64,20 @@ body {
     transition:  0.3s ease;
 }
 
+@media (max-width: 1150px) {
+    .drawin-hangman,
+    .drawin-tic-tac-toe {
+      display: none;
+    }
+  }
+  
+  @media (min-width: 1150px) {
+    .drawin-hangman,
+    .drawin-tic-tac-toe {
+      display: block;
+    }
+  }
+  
 
 
 /* footer */

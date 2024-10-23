@@ -6,10 +6,10 @@ import {
     Mole,
     Score,
     StartButton,
-    BackToMenuButton, // Importa el nuevo botón estilizado
+    BackToMenuButton, 
     MessageContainer,
     Message
-} from './whackAMole.styles'; // Importar los componentes estilizados
+} from './whackAMole.styles'; 
 
 const WhackAMole = ({ onBackToMenu }) => {
     const [score, setScore] = useState(0);
@@ -37,11 +37,11 @@ const WhackAMole = ({ onBackToMenu }) => {
         setIsActive(true);
         setMoleSpeed(1000);
     };
-
+    // Topo
     const showMole = () => {
         const gameArea = document.getElementById('game');
-        const maxX = gameArea.clientWidth - 70; // Resta el ancho del topo
-        const maxY = gameArea.clientHeight - 70; // Resta el alto del topo
+        const maxX = gameArea.clientWidth - 70; 
+        const maxY = gameArea.clientHeight - 70; 
         const randomX = Math.floor(Math.random() * maxX);
         const randomY = Math.floor(Math.random() * maxY);
 
@@ -61,16 +61,16 @@ const WhackAMole = ({ onBackToMenu }) => {
     const increaseMoleSpeed = () => {
         const speedIncreaseInterval = setInterval(() => {
             if (moleSpeed > 850) {
-                setMoleSpeed(moleSpeed - 60);
+                setMoleSpeed(moleSpeed - 80);
             } else {
                 clearInterval(speedIncreaseInterval);
             }
         }, 1000);
     };
-
+// si isActive es true se ejecuta increaseMoleSpeed
     useEffect(() => {
         if (isActive) {
-            increaseMoleSpeed();
+            increaseMoleSpeed(); 
         }
     }, [isActive]);
 
